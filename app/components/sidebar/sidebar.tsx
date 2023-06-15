@@ -45,10 +45,13 @@ import {
                   AI Settings
                 </Button>
               </a>
-              <Button variant="ghost" size="sm" className="w-full justify-start">
-                <Radio className="mr-2 h-4 w-4" />
-                Issue Report
-              </Button>
+              <a href="http://localhost:3000/customer">
+                <Button variant="ghost" size="sm" className="w-full justify-start">
+                  <Radio className="mr-2 h-4 w-4" />
+                  Issue Report
+                </Button>
+              </a>
+ 
               <Button variant="ghost" size="sm" className="w-full justify-start">
                 <Radio className="mr-2 h-4 w-4" />
                 Activities
