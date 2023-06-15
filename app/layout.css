@@ -1,0 +1,24 @@
+body{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    width:100vw;
+}
+
+.sidebar-layout{
+    width:15%;
+}
+
+.main-content{
+    width:85%;
+    background-color:#ffffff;
+    min-height:100vh;
+    display: flex;
+    padding:10em 5em;
+}
+
+.sidebar{
+    min-height:100vh;
+    border-right:1px solid #ccc;
+}
+

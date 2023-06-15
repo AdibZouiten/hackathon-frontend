@@ -1,0 +1,40 @@
+
+.settings-form{
+    width:100%;
+}
+
+h2{
+    margin-bottom:1em;
+}
+
+.grid{
+    margin-bottom:2em;
+    width:100%;
+}
+
+label{
+    width:100%;
+}
+#picture,
+#url{
+    width:100% !important;
+}
+
+#picture{
+    height:30vh;
+}
+
+.settings-submit{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap:1em;
+    padding: 1em;
+}
+
+.settings-page-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width:100%;
+}
