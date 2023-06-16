@@ -1,3 +1,5 @@
+"use client"
+
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -8,19 +10,35 @@ import {
     PopoverTrigger,
   } from "@/components/ui/popover"
 import { Settings2 } from "lucide-react"
-
 import './setting.css'
 import Profile from "../components/profile/profile"
 import Doc_icon from "../../public/Group.svg"
+import { useState,useRef } from 'react';
 
 
 
 
 
 
-export default function settings(){
+
+export default function Settings(){
+
+    const [formData, setFormData] = useState({
+        url: '',
+        Document: '',
+        message: ''
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Access the form data
+        console.log(formData);
+        // Send the form data to your server or perform any desired actions
+        // ...
+    };
+
     return(
-        <div className="settings-form">
+        <form className="settings-form">
             <div className="settings-page-header">
                 <h2 className="scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl">
                     This is the AI Agent Settings
@@ -93,6 +111,6 @@ export default function settings(){
                 <Button type="reset" variant="secondary" >cancel</Button>
                 <Button type="submit">save</Button>
             </div>
-        </div>
+        </form>
     )
 }
