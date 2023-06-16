@@ -16,6 +16,13 @@ import {
   import { useRouter } from 'next/router';
 
   import "./sidebar.css"
+  import Settings_icon from "../../../public/wrench.svg" 
+  import Issues_icon from "../../../public/gavel.svg"
+  import Orders_icon from "../../../public/calendar-check.svg"
+  import Activities_icon from "../../../public/component.svg"
+  import Chat_icon from "../../../public/message-circle.svg"
+  import Integrations_icon from "../../../public/share-2.svg"
+  
 
 
   
@@ -44,33 +51,33 @@ import {
               </a>
               <a href="http://localhost:3000/settings">
                 <Button  variant="ghost" size="sm" className="w-full justify-start">
-                  <LayoutGrid className="mr-2 h-4 w-4" />
+                  <Settings_icon className="sidebar-icons" />
                   AI Settings
                 </Button>
               </a>
               <a href="http://localhost:3000/customer">
                 <Button variant="ghost" size="sm" className="w-full justify-start">
-                  <Radio className="mr-2 h-4 w-4" />
+                  <Issues_icon className="sidebar-icons"/>
                   Issue Report
                 </Button>
               </a>
               <a href="http://localhost:3000/orders">
                 <Button variant="ghost" size="sm" className="w-full justify-start">
-                  <Radio className="mr-2 h-4 w-4" />
+                  <Orders_icon className="sidebar-icons"/>
                   Orders
                 </Button>
               </a>
  
               <Button variant="ghost" size="sm" className="w-full justify-start">
-                <Radio className="mr-2 h-4 w-4" />
+                <Activities_icon className="sidebar-icons"/>
                 Activities
               </Button>
               <Button variant="ghost" size="sm" className="w-full justify-start">
-                <Radio className="mr-2 h-4 w-4" />
+                <Chat_icon className="sidebar-icons"/>
                 Chat
               </Button>
               <Button variant="ghost" size="sm" className="w-full justify-start">
-                <PlayCircle className="mr-2 h-4 w-4" />
+                <Integrations_icon className="sidebar-icons"/>
                 Integrations
               </Button>
             </div>

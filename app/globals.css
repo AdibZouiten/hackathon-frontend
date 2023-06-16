@@ -83,3 +83,18 @@
 *{
   box-sizing: border-box;
 }
+
+.dashboard-container{
+  min-width:100%;
+  padding:3em;
+}
+
+.stats-row{
+  display: flex;
+  justify-content:space-between;
+  margin-bottom:4em;
+}
+
+article{
+  width:100%;
+}

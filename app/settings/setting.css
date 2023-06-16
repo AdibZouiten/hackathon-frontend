@@ -39,3 +39,15 @@ label{
     align-items: baseline;
     width:100%;
 }
+
+.filesSection{
+    max-width:900px;
+}
+
+.file{
+    padding:0.5em;
+    margin:1em 0;
+}
+hr{
+    margin-top:3em;
+}

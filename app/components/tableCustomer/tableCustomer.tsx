@@ -22,6 +22,17 @@ import {
   } from "@/components/ui/dialog"
   import { Input } from "@/components/ui/input"
   import { Label } from "@/components/ui/label"
+  import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog"
   
   const invoices = [
     {
@@ -219,14 +230,14 @@ import {
         </TableHeader>
         <TableBody>
           {invoices.map((issue) => (
-            <TableRow key={issue.Room}>
-              <TableCell className="font-medium">{issue.Name}</TableCell>
-              <TableCell>{issue.Room}</TableCell>
-              <TableCell><Badge>{issue.Status}</Badge></TableCell>
-              <TableCell>{issue.Resolutiontime}</TableCell>
+
+          <TableRow key={issue.Room}>
+                <TableCell className="font-medium">{issue.Name}</TableCell>
+                <TableCell>{issue.Room}</TableCell>
+                <TableCell><Badge>{issue.Status}</Badge></TableCell>
+                <TableCell>{issue.Resolutiontime}</TableCell>
             </TableRow>
-
-
+  
 
     
           ))}

@@ -11,6 +11,11 @@ import { Settings2 } from "lucide-react"
 
 import './setting.css'
 import Profile from "../components/profile/profile"
+import Doc_icon from "../../public/Group.svg"
+
+
+
+
 
 
 export default function settings(){
@@ -49,6 +54,22 @@ export default function settings(){
             <div className="grid w-full items-center gap-1.5">
                 <Label htmlFor="picture">Document</Label>
                 <Input id="picture" type="file" />
+            </div>
+            <div className="filesSection space-y-8">
+                <div className="flex items-center file">
+                    <Doc_icon/>
+                    <div className="ml-4 space-y-1">
+                    <p className="text-sm font-medium leading-none">file.pdf</p>
+                    </div>
+                    <div className="ml-auto font-medium">5.7MB</div>
+                </div>
+                <div className="flex items-center file">
+                    <Doc_icon/>
+                    <div className="ml-4 space-y-1">
+                    <p className="text-sm font-medium leading-none">file.pdf</p>
+                    </div>
+                    <div className="ml-auto font-medium">5.7MB</div>
+                </div>
             </div>
             <hr />
             <div className="settings-submit">
