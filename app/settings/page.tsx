@@ -13,7 +13,56 @@ import './setting.css'
 import Profile from "../components/profile/profile"
 import Doc_icon from "../../public/Group.svg"
 import { useState , useRef , FormEvent  } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+
+
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import {
+    getFirestore, 
+    collection, 
+    getDocs,
+    QuerySnapshot, 
+    DocumentData, 
+    QueryDocumentSnapshot,
+    addDoc
+} from 'firebase/firestore'
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyBIJecicTmiIZHArf2iKwB9q92fVxySXt4",
+    authDomain: "hack-form-upload.firebaseapp.com",
+    projectId: "hack-form-upload",
+    storageBucket: "hack-form-upload.appspot.com",
+    messagingSenderId: "166875386873",
+    appId: "1:166875386873:web:8f26bd6b1b86a1ce33a328",
+    measurementId: "G-1XQL2H6KC6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Get Firestore database instance
+const db = getFirestore(app);
+
+// collection ref
+const colRef = collection(db, 'files')
+
+
+// Get Firebase Storage instance
+const storage = getStorage(app);
+
+
+
+
 
 
 
@@ -22,10 +71,13 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 export default function Settings(){
 
+    
     const [formData, setFormData] = useState({
         url: '',
         Document: ''
     });
+
+    const [imgUrl, setImgUrl] = useState(null);
 
 
     const urlRef =  useRef<HTMLInputElement>(null);
@@ -33,21 +85,27 @@ export default function Settings(){
 
     
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
     
         // Access the form input values using the refs
         const formData = {
             url: urlRef.current?.value || '',
-            Document:  documentRef.current?.value || ''
+            Document:  documentRef.current?.files?.[0] || null
         };
 
+        
     
         // Log the form data
         console.log(formData);
     
-        // Send the form data to your server or perform any desired actions
-        // ...
+
+        // Add collection data
+        addDoc(colRef, formData)
+        .then(() => {
+            console.log('files added successfully');
+            
+        })
     };
   
     const handleFile = (e: React.FormEvent) => {
