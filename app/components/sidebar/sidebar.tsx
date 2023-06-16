@@ -13,6 +13,9 @@ import {
   import { cn } from "@/lib/utils"
   import { Button } from "@/components/ui/button"
   import { ScrollArea } from "@/components/ui/scroll-area"
+  import { useRouter } from 'next/router';
+
+  import "./sidebar.css"
 
 
   
@@ -49,6 +52,12 @@ import {
                 <Button variant="ghost" size="sm" className="w-full justify-start">
                   <Radio className="mr-2 h-4 w-4" />
                   Issue Report
+                </Button>
+              </a>
+              <a href="http://localhost:3000/orders">
+                <Button variant="ghost" size="sm" className="w-full justify-start">
+                  <Radio className="mr-2 h-4 w-4" />
+                  Orders
                 </Button>
               </a>
  

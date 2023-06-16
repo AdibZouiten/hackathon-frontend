@@ -1,0 +1,7 @@
+.stats-row{
+    display: flex;
+    justify-content: space-around;
+}
+.order-table{
+    width:100%;
+}

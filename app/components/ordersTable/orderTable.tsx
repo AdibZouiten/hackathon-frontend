@@ -8,20 +8,7 @@ import {
     TableRow,
   } from "@/components/ui/table"
   import { Badge } from "@/components/ui/badge"
-  import "./tableCustomer.css"
-
-  import { Button } from "@/components/ui/button"
-  import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
-  import { Input } from "@/components/ui/input"
-  import { Label } from "@/components/ui/label"
+  import "./orderTable.css"
   
   const invoices = [
     {
@@ -95,10 +82,9 @@ import {
 
   ]
   
-  export function TableCustomer() {
+  export function OrderTable() {
     return (
-      <div className="data-table-customer">
-
+      <div className="data-table-order">
         <div className="stats-row">
 
         
@@ -206,32 +192,28 @@ import {
         </article>
         </div>
 
-      <Table>
+        <Table className="order-table">
 
-        <TableCaption>A list of your recent customer issus</TableCaption>
+        <TableCaption>A list of your recent customer Orders</TableCaption>
         <TableHeader>
-          <TableRow>
+        <TableRow>
             <TableHead>Name</TableHead>
             <TableHead>Room</TableHead>
             <TableHead>Status</TableHead>
             <TableHead >Resolution time</TableHead>
-          </TableRow>
+        </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.map((issue) => (
+        {invoices.map((issue) => (
             <TableRow key={issue.Room}>
-              <TableCell className="font-medium">{issue.Name}</TableCell>
-              <TableCell>{issue.Room}</TableCell>
-              <TableCell><Badge>{issue.Status}</Badge></TableCell>
-              <TableCell>{issue.Resolutiontime}</TableCell>
+            <TableCell className="font-medium">{issue.Name}</TableCell>
+            <TableCell>{issue.Room}</TableCell>
+            <TableCell><Badge>{issue.Status}</Badge></TableCell>
+            <TableCell>{issue.Resolutiontime}</TableCell>
             </TableRow>
-
-
-
-    
-          ))}
+        ))}
         </TableBody>
-      </Table>
+        </Table>
       </div>
     )
   }
