@@ -9,12 +9,11 @@ import {
     PopoverContent,
     PopoverTrigger,
   } from "@/components/ui/popover"
-import { Settings2 } from "lucide-react"
 import './setting.css'
 import Profile from "../components/profile/profile"
 import Doc_icon from "../../public/Group.svg"
-import { useState,useRef } from 'react';
-
+import { useState , useRef , FormEvent  } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 
 
@@ -25,20 +24,43 @@ export default function Settings(){
 
     const [formData, setFormData] = useState({
         url: '',
-        Document: '',
-        message: ''
+        Document: ''
     });
 
-    const handleSubmit = (e) => {
+
+    const urlRef =  useRef<HTMLInputElement>(null);
+    const documentRef =  useRef<HTMLInputElement>(null);
+
+    
+
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Access the form data
+    
+        // Access the form input values using the refs
+        const formData = {
+            url: urlRef.current?.value || '',
+            Document:  documentRef.current?.value || ''
+        };
+
+    
+        // Log the form data
         console.log(formData);
+    
         // Send the form data to your server or perform any desired actions
         // ...
     };
+  
+    const handleFile = (e: React.FormEvent) => {
+        e.preventDefault();
+
+
+
+    }
+
+
 
     return(
-        <form className="settings-form">
+        <form className="settings-form" onSubmit={handleSubmit}>
             <div className="settings-page-header">
                 <h2 className="scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl">
                     This is the AI Agent Settings
@@ -67,7 +89,7 @@ export default function Settings(){
 
             <div className="grid w-full  items-center gap-1.5">
                 <Label htmlFor="email">Website</Label>
-                <Input type="url" id="url" placeholder="Url" />
+                <Input type="url" id="url" placeholder="Url" ref={urlRef} />
             </div>
             <div className="grid w-full items-center gap-1.5">
                 <Label htmlFor="picture">Document</Label>
@@ -85,7 +107,7 @@ export default function Settings(){
                                 <span className="text-blue-600 underline">browse</span>
                             </span>
                         </span>
-                        <input type="file" name="file_upload" className="hidden"/>
+                        <input type="file" name="file_upload" className="hidden" ref={documentRef} onChange={()=>{handleFile}}/>
                     </label>
                 </div>
 
