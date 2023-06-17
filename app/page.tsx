@@ -17,35 +17,7 @@ export default async function Home() {
   });
 
   
-  fetchDataReports();
 
-  async function fetchDataReports() {
-    try {
-      const response = await api.issuesReports.getIssuesReports();
-      const data = response;
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-  async function fetchDataOrder() {
-    try {
-      const response = await api.issuesReports.getIssuesReports();
-      const data = response.data;
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-  async function fetchDataSales() {
-    try {
-      const response = await api.issuesReports.getIssuesReports();
-      const data = response.data;
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
 
   const issues = await api.issuesReports.getIssuesReports();
   const issuesCount= issues.data.data?.length;
@@ -54,6 +26,7 @@ export default async function Home() {
 
   const orders = await api.serviceOrders.getServiceOrders();
   const ordersCount= orders.data.data?.length;
+  
   
 
   return (

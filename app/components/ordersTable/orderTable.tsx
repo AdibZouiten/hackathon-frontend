@@ -10,77 +10,7 @@ import {
   import { Badge } from "@/components/ui/badge"
   import "./orderTable.css"
   
-  const invoices = [
-    {
-      Name: "Jeff Doe",
-      Room: 243,
-      Status: "Fixed",
-      Resolutiontime: 30,
-    },
-    {
-      Name: "John Smith",
-      Room: 105,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "Emily Johnson",
-      Room: 318,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "Sarah Thompson",
-      Room: 512,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "Michael Davis",
-      Room: 415,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "Jessica Brown",
-      Room: 627,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "David Wilson",
-      Room: 201,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "Alex Miller",
-      Room: 328,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "Olivia Harris",
-      Room: 432,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
-      
-      {
-      Name: "William Thompson",
-      Room: 519,
-      Status: "Fixed",
-      Resolutiontime: 30,
-      },
 
-  ]
   const people = [
     {
       request: 'Airport Pickup',
@@ -121,7 +51,42 @@ import {
     },
 
   ]
-  export function OrderTable() {
+
+  import { Api } from "../../Api"
+
+  export async function OrderTable() {
+
+    const api = new Api({
+      baseUrl: `https://determined-boot-55a0a0a0d0.strapiapp.com/api`,
+      baseApiParams: {
+        headers: {
+          Authorization: `Bearer e9a6bf8cfd2b4d799cba75db0a66c5a62d931d3114e48d45fe9af0095173b75b9950fe97e69e0ea024ca134fd04238d8a4687466722ec8eca9bbf9731beabce302c3d6e6ff4153127e93e47112eb7bfb954ab4d4df2e57ab07b4e3a98b51035a164909545e3018481bec078c98f4f00b7fdb2c7e349d82e947b6f08564477495`,
+          accept: "application/json",
+        },
+      },
+    });
+  
+  
+    const issues = await api.issuesReports.getIssuesReports();
+    const issuesCount= issues.data.data?.length;
+    
+  
+  
+    const orders = await api.serviceOrders.getServiceOrders({
+      populate:'*',
+    });
+    const ordersCount= orders.data.data?.length;
+    const ordersData = orders.data
+    console.log(orders.data);
+
+
+    const food = await api.foodOrderItems.getFoodOrderItems({
+      populate:'*',
+    });
+    const foodData = orders.data
+    console.log(foodData);
+
+
     return (
       <div>
       <div className="stats-row">
@@ -232,19 +197,19 @@ import {
       </div>
       
       <ul role="list" className="divide-y divide-gray-100">
-      {people.map((person) => (
-        <li key={person.room} className="flex justify-between gap-x-6 py-5">
+      {ordersData.data?.map((orders) => (
+        <li key={orders.attributes?.room_number} className="flex justify-between gap-x-6 py-5">
           <div className="flex gap-x-4">
-            <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
+          <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
             <div className="min-w-0 flex-auto">
-              <p className="text-sm font-semibold leading-6 text-gray-900">{person.request}</p>
-              <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.room}</p>
+              <p className="text-sm font-semibold leading-6 text-gray-900">Order from room {orders.attributes?.room_number}</p>
+              <p className="mt-1 truncate text-xs leading-5 text-gray-500">{orders.attributes?.special_note}</p>
             </div>
           </div>
           <div className="hidden sm:flex sm:flex-col sm:items-end">
             
               <p className="mt-1 text-xs leading-5 text-gray-500">
-                <time dateTime={person.lastSeenDateTime}>{person.pendingTime}</time>
+                <time dateTime={orders.attributes?.datetime}>{orders.attributes?.datetime}</time>
               </p>
           </div>
         </li>

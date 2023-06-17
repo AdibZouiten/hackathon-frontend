@@ -33,6 +33,9 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
+
+import { Api } from "../../Api"
+
   
   const invoices = [
     {
@@ -106,7 +109,28 @@ import {
 
   ]
   
-  export function TableCustomer() {
+  export async function TableCustomer() {
+
+    const api = new Api({
+      baseUrl: `https://determined-boot-55a0a0a0d0.strapiapp.com/api`,
+      baseApiParams: {
+        headers: {
+          Authorization: `Bearer e9a6bf8cfd2b4d799cba75db0a66c5a62d931d3114e48d45fe9af0095173b75b9950fe97e69e0ea024ca134fd04238d8a4687466722ec8eca9bbf9731beabce302c3d6e6ff4153127e93e47112eb7bfb954ab4d4df2e57ab07b4e3a98b51035a164909545e3018481bec078c98f4f00b7fdb2c7e349d82e947b6f08564477495`,
+          accept: "application/json",
+        },
+      },
+    });
+  
+  
+    const issues = await api.issuesReports.getIssuesReports();
+    const issuesCount= issues.data.data?.length;
+    const issusData = issues.data
+    console.log(issues.data);
+  
+  
+    const orders = await api.serviceOrders.getServiceOrders();
+    const ordersCount= orders.data.data?.length;
+
     return (
       <div className="data-table-customer">
 
@@ -229,7 +253,7 @@ import {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.map((issue) => (
+          {issusData.data?.map((issue) => (
 
           <TableRow key={issue.Room}>
                 <TableCell className="font-medium">{issue.Name}</TableCell>
