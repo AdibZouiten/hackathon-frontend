@@ -39,7 +39,7 @@ import {
               Discover
             </h2>
             <div className="space-y-1">
-              <a href="http://localhost:3000/">
+              <a href="./">
                 <Button
                   variant="secondary"
                   size="sm"
@@ -49,19 +49,19 @@ import {
                   Dashboard
                 </Button>
               </a>
-              <a href="http://localhost:3000/settings">
+              <a href="./settings">
                 <Button  variant="ghost" size="sm" className="w-full justify-start">
                   <Settings_icon className="sidebar-icons" />
                   AI Settings
                 </Button>
               </a>
-              <a href="http://localhost:3000/customer">
+              <a href="./customer">
                 <Button variant="ghost" size="sm" className="w-full justify-start">
                   <Issues_icon className="sidebar-icons"/>
                   Issue Report
                 </Button>
               </a>
-              <a href="http://localhost:3000/orders">
+              <a href="./orders">
                 <Button variant="ghost" size="sm" className="w-full justify-start">
                   <Orders_icon className="sidebar-icons"/>
                   Orders
