@@ -5,3 +5,8 @@
 .order-table{
     width:100%;
 }
+
+.price{
+    font-weight:400;
+    font-size:1rem;
+}

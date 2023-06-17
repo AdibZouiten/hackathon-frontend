@@ -1,12 +1,14 @@
 body{
     display:flex;
     justify-content: space-between;
-    align-items:center;
+    align-items:flex-start;
     width:100vw;
 }
 
 .sidebar-layout{
     width:15%;
+    min-height:100vh;
+    top:0;
 }
 
 .main-content{

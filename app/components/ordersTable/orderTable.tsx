@@ -53,6 +53,7 @@ import {
   ]
 
   import { Api } from "../../Api"
+import { Bold } from "lucide-react"
 
   export async function OrderTable() {
 
@@ -89,112 +90,110 @@ import {
 
     return (
       <div>
-      <div className="stats-row">
-
-              
-      <article
-        className="flex flex-col gap-4 rounded-lg border border-gray-100 bg-white p-6"
-      >
-        <div
-          className="inline-flex gap-2 self-end rounded bg-green-100 p-1 text-green-600"
+       <div className="stats-row">        
+        <article
+          className="flex flex-col gap-4 rounded-lg border border-gray-100 bg-white p-6"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <div
+            className="inline-flex gap-2 self-end rounded bg-green-100 p-1 text-green-600"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-            />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+              />
+            </svg>
 
-          <span className="text-xs font-medium"> 67.81% </span>
-        </div>
+            <span className="text-xs font-medium"> 67.81% </span>
+          </div>
 
-        <div>
-          <strong className="block text-sm font-medium text-gray-500"> Profit </strong>
+          <div>
+            <strong className="block text-sm font-medium text-gray-500"> Orders </strong>
 
-          <p>
-            <span className="text-2xl font-medium text-gray-900"> $404.32 </span>
+            <p>
+              <span className="text-2xl font-medium text-gray-900">{ordersCount}</span>
 
-            <span className="text-xs text-gray-500"> from $240.94 </span>
-          </p>
-        </div>
-      </article>
-      <article
-        className="flex flex-col gap-4 rounded-lg border border-gray-100 bg-white p-6"
-      >
-        <div
-          className="inline-flex gap-2 self-end rounded bg-green-100 p-1 text-green-600"
+              <span className="text-xs text-gray-500"> </span>
+            </p>
+          </div>
+        </article>
+        <article
+          className="flex flex-col gap-4 rounded-lg border border-gray-100 bg-white p-6"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <div
+            className="inline-flex gap-2 self-end rounded bg-green-100 p-1 text-green-600"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-            />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+              />
+            </svg>
 
-          <span className="text-xs font-medium"> 67.81% </span>
-        </div>
+            <span className="text-xs font-medium"> 67.81% </span>
+          </div>
 
-        <div>
-          <strong className="block text-sm font-medium text-gray-500"> Profit </strong>
+          <div>
+            <strong className="block text-sm font-medium text-gray-500"> issue report </strong>
 
-          <p>
-            <span className="text-2xl font-medium text-gray-900"> $404.32 </span>
+            <p>
+              <span className="text-2xl font-medium text-gray-900"> {issuesCount} </span>
 
-            <span className="text-xs text-gray-500"> from $240.94 </span>
-          </p>
-        </div>
-      </article>
-      <article
-        className="flex flex-col gap-4 rounded-lg border border-gray-100 bg-white p-6"
-      >
-        <div
-          className="inline-flex gap-2 self-end rounded bg-green-100 p-1 text-green-600"
+              <span className="text-xs text-gray-500">  </span>
+            </p>
+          </div>
+        </article>
+        <article
+          className="flex flex-col gap-4 rounded-lg border border-gray-100 bg-white p-6"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <div
+            className="inline-flex gap-2 self-end rounded bg-green-100 p-1 text-green-600"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-            />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+              />
+            </svg>
 
-          <span className="text-xs font-medium"> 67.81% </span>
+            <span className="text-xs font-medium"> 67.81% </span>
+          </div>
+
+          <div>
+            <strong className="block text-sm font-medium text-gray-500"> Total Revenue </strong>
+
+            <p>
+              <span className="text-2xl font-medium text-gray-900"> $4404.32 </span>
+
+              <span className="text-xs text-gray-500"></span>
+            </p>
+          </div>
+        </article>
         </div>
-
-        <div>
-          <strong className="block text-sm font-medium text-gray-500"> Profit </strong>
-
-          <p>
-            <span className="text-2xl font-medium text-gray-900"> $404.32 </span>
-
-            <span className="text-xs text-gray-500"> from $240.94 </span>
-          </p>
-        </div>
-      </article>
-      </div>
       
       <ul role="list" className="divide-y divide-gray-100">
       {ordersData.data?.map((orders) => (
@@ -202,8 +201,8 @@ import {
           <div className="flex gap-x-4">
           <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
             <div className="min-w-0 flex-auto">
-              <p className="text-sm font-semibold leading-6 text-gray-900">Order from room {orders.attributes?.room_number}</p>
-              <p className="mt-1 truncate text-xs leading-5 text-gray-500">{orders.attributes?.special_note}</p>
+              <p className="text-sm font-semibold leading-6 text-gray-900">Pizza <span className="price">112.48SAR</span></p>
+              <p className="mt-1 truncate text-xs leading-5 text-gray-500">Room number {orders.attributes?.room_number}</p>
             </div>
           </div>
           <div className="hidden sm:flex sm:flex-col sm:items-end">

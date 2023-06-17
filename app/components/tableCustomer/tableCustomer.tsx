@@ -124,9 +124,10 @@ import { Api } from "../../Api"
   
     const issues = await api.issuesReports.getIssuesReports();
     const issuesCount= issues.data.data?.length;
-    const issusData = issues.data
-    console.log(issues.data);
+    const issusData = issues.data;
+    console.log(issusData);
   
+
   
     const orders = await api.serviceOrders.getServiceOrders();
     const ordersCount= orders.data.data?.length;
@@ -134,9 +135,7 @@ import { Api } from "../../Api"
     return (
       <div className="data-table-customer">
 
-        <div className="stats-row">
-
-        
+<div className="stats-row">        
         <article
           className="flex flex-col gap-4 rounded-lg border border-gray-100 bg-white p-6"
         >
@@ -162,12 +161,12 @@ import { Api } from "../../Api"
           </div>
 
           <div>
-            <strong className="block text-sm font-medium text-gray-500"> Profit </strong>
+            <strong className="block text-sm font-medium text-gray-500"> Orders </strong>
 
             <p>
-              <span className="text-2xl font-medium text-gray-900"> $404.32 </span>
+              <span className="text-2xl font-medium text-gray-900">{ordersCount}</span>
 
-              <span className="text-xs text-gray-500"> from $240.94 </span>
+              <span className="text-xs text-gray-500"> </span>
             </p>
           </div>
         </article>
@@ -196,12 +195,12 @@ import { Api } from "../../Api"
           </div>
 
           <div>
-            <strong className="block text-sm font-medium text-gray-500"> Profit </strong>
+            <strong className="block text-sm font-medium text-gray-500"> issue report </strong>
 
             <p>
-              <span className="text-2xl font-medium text-gray-900"> $404.32 </span>
+              <span className="text-2xl font-medium text-gray-900"> {issuesCount} </span>
 
-              <span className="text-xs text-gray-500"> from $240.94 </span>
+              <span className="text-xs text-gray-500">  </span>
             </p>
           </div>
         </article>
@@ -230,12 +229,12 @@ import { Api } from "../../Api"
           </div>
 
           <div>
-            <strong className="block text-sm font-medium text-gray-500"> Profit </strong>
+            <strong className="block text-sm font-medium text-gray-500"> Total Revenue </strong>
 
             <p>
-              <span className="text-2xl font-medium text-gray-900"> $404.32 </span>
+              <span className="text-2xl font-medium text-gray-900"> $4404.32 </span>
 
-              <span className="text-xs text-gray-500"> from $240.94 </span>
+              <span className="text-xs text-gray-500"></span>
             </p>
           </div>
         </article>
@@ -255,11 +254,11 @@ import { Api } from "../../Api"
         <TableBody>
           {issusData.data?.map((issue) => (
 
-          <TableRow key={issue.Room}>
-                <TableCell className="font-medium">{issue.Name}</TableCell>
-                <TableCell>{issue.Room}</TableCell>
-                <TableCell><Badge>{issue.Status}</Badge></TableCell>
-                <TableCell>{issue.Resolutiontime}</TableCell>
+          <TableRow key={issue.attributes?.roomnumber}>
+                <TableCell className="font-medium">{issue.attributes?.title}</TableCell>
+                <TableCell>{issue.attributes?.roomnumber}</TableCell>
+                <TableCell><Badge>{issue.attributes?.status}</Badge></TableCell>
+                <TableCell>{issue.attributes?.publishedAt}</TableCell>
             </TableRow>
   
 
