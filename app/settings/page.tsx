@@ -32,6 +32,7 @@ import {
     QueryDocumentSnapshot,
     addDoc
 } from 'firebase/firestore'
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -72,12 +73,12 @@ const storage = getStorage(app);
 export default function Settings(){
 
     
-    const [formData, setFormData] = useState({
-        url: '',
-        Document: ''
-    });
+    const [file, setFile] = useState<File | null>();
 
-    const [imgUrl, setImgUrl] = useState(null);
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = event.target.files?.[0];
+        setFile(selectedFile);
+    };
 
 
     const urlRef =  useRef<HTMLInputElement>(null);
@@ -88,14 +89,25 @@ export default function Settings(){
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
     
+        if (file) {
+            const fileName = file.name;
+            const fileRef = ref(storage, fileName);
+
+            try {
+                await uploadBytes(fileRef, file);
+                console.log('File uploaded successfully!');
+            } catch (error) {
+                console.error('Upload error:', error);
+            }
+        }
+
+
         // Access the form input values using the refs
         const formData = {
             url: urlRef.current?.value || '',
-            Document:  documentRef.current?.files?.[0] || null
         };
 
         
-    
         // Log the form data
         console.log(formData);
     
@@ -106,6 +118,8 @@ export default function Settings(){
             console.log('files added successfully');
             
         })
+
+
     };
   
     const handleFile = (e: React.FormEvent) => {
@@ -165,7 +179,7 @@ export default function Settings(){
                                 <span className="text-blue-600 underline">browse</span>
                             </span>
                         </span>
-                        <input type="file" name="file_upload" className="hidden" ref={documentRef} onChange={()=>{handleFile}}/>
+                        <input type="file" name="file_upload" className="hidden file" ref={documentRef} onChange={handleFileChange}/>
                     </label>
                 </div>
 
